@@ -1,0 +1,18 @@
+Converting model
+
+python convert_weights_to_tensorflow.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4
+
+python convert_weights_to_tensorflow.py --weights ./data/yolov4_face_mask.weights --output ./checkpoints/masks-416 --input_size 416 --model yolov4
+python convert_weights_to_tensorflow.py --weights ./data/yolov4-tiny-mask.weights --output ./checkpoints/yolov4-masks-tiny-416 --input_size 416 --model yolov4 --tiny
+
+
+Running object detection on a photo
+python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --images ./data/images/jasiRuby.jpg
+python detect.py --weights ./checkpoints/masks-416 --size 416 --model yolov4 --images ./data/images/mask-wearing.jpg
+
+Running object detection on a video
+python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video ./data/video/video.mp4 --output ./detections/results.mp4
+
+Running object detection on a webcam
+python detect_video.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --video 0 --output ./detections/WebCamResults.mp4
+python detect_video.py --weights ./checkpoints/masks-416 --size 416 --model yolov4 --video 0 --output ./detections/WebCamMaskResults.mp4
